@@ -14,7 +14,7 @@ export function ProductPack({ flavor, className = "" }: ProductPackProps) {
 
   return (
     <div
-      className={`product-pack relative h-[26rem] w-[18rem] md:h-[32rem] md:w-[24rem] ${className}`}
+      className={`product-pack relative h-104 w-[18rem] md:h-128 md:w-[24rem] ${className}`}
     >
       <Image
         src={imageSrc}

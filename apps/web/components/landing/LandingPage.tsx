@@ -447,7 +447,7 @@ export function LandingPage() {
         data-pin="products"
         className="flex items-center py-28"
       >
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#eaf0df] to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#eaf0df] to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="reveal text-xs font-semibold uppercase tracking-[0.28em] text-earth">
@@ -493,7 +493,7 @@ export function LandingPage() {
         tone="deep"
         className="flex items-center py-28"
       >
-        <div className="absolute left-1/2 top-16 h-80 w-[46rem] -translate-x-1/2 rounded-full bg-cream/5 blur-3xl" />
+        <div className="absolute left-1/2 top-16 h-80 w-184 -translate-x-1/2 rounded-full bg-cream/5 blur-3xl" />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-8">
           <div className="max-w-3xl">
             <p className="reveal text-xs font-semibold uppercase tracking-[0.28em] text-gold">
@@ -558,11 +558,11 @@ function OrganicDecor({
   return (
     <>
       <div
-        className="absolute -left-32 top-24 h-72 w-72 rounded-[48%_52%_61%_39%] bg-moss/10 blur-xl md:h-[28rem] md:w-[28rem]"
+        className="absolute -left-32 top-24 h-72 w-72 rounded-[48%_52%_61%_39%] bg-moss/10 blur-xl md:h-112 md:w-md"
         style={{ transform: "translateZ(0)", willChange: "transform" }}
       />
       <div
-        className="absolute -right-28 bottom-12 h-80 w-80 rounded-[58%_42%_45%_55%] bg-gold/10 blur-xl md:h-[30rem] md:w-[30rem]"
+        className="absolute -right-28 bottom-12 h-80 w-80 rounded-[58%_42%_45%_55%] bg-gold/10 blur-xl md:h-120 md:w-120"
         style={{ transform: "translateZ(0)", willChange: "transform" }}
       />
       <span

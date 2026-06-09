@@ -140,7 +140,7 @@ export default function Navbar() {
             >
               <span
                 aria-hidden
-                className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-cream/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-cream/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
               />
               <ShoppingBag
                 className="relative z-10 h-3.5 w-3.5"
@@ -189,7 +189,7 @@ export default function Navbar() {
         className={cn(
           "fixed inset-x-3 z-40 mx-auto max-w-6xl origin-top overflow-hidden rounded-3xl border border-cream/10 bg-forest/95 backdrop-blur-2xl transition-all duration-500 ease-out lg:hidden",
           isOpen
-            ? "top-[5.5rem] scale-100 opacity-100 shadow-premium md:top-32"
+            ? "top-22 scale-100 opacity-100 shadow-premium md:top-32"
             : "pointer-events-none top-20 scale-95 opacity-0 md:top-28",
         )}
         style={{ maxHeight: isOpen ? "32rem" : "0" }}
