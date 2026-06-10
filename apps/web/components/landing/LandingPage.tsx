@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -8,53 +9,10 @@ import { benefits, features, flavors, testimonials } from "@/lib/landing-data";
 import { BenefitCard } from "./BenifitCard";
 import { FeatureCard } from "./FeatureCard";
 import { ProductCard } from "./ProductCard";
-import { ProductStage } from "./ProductStage";
 import { Section } from "./Section";
 import { TestimonialCard } from "./TestimonialCard";
 
 gsap.registerPlugin(ScrollTrigger);
-
-type Pose = { x: string; y: string; scale: number; rotation: number };
-
-type Config = {
-  heroMint: Pose;
-  heroPeri: Pose;
-  cardScale: number;
-  cardRotMint: number;
-  cardRotPeri: number;
-  vMint: Pose;
-  vPeri: Pose;
-};
-
-const DESKTOP: Config = {
-  heroMint: { x: "28vw", y: "-16vh", scale: 0.8, rotation: 8 },
-  heroPeri: { x: "14vw", y: "-12vh", scale: 0.88, rotation: -10 },
-  cardScale: 0.82,
-  cardRotMint: -3,
-  cardRotPeri: 3,
-  vPeri: { x: "28vw", y: "-6vh", scale: 0.72, rotation: -18 },
-  vMint: { x: "14vw", y: "-6vh", scale: 0.72, rotation: 18 },
-};
-
-const TABLET: Config = {
-  heroMint: { x: "-10vw", y: "-28vh", scale: 0.58, rotation: 8 },
-  heroPeri: { x: "10vw", y: "-28vh", scale: 0.64, rotation: -8 },
-  cardScale: 0.8,
-  cardRotMint: -3,
-  cardRotPeri: 3,
-  vPeri: { x: "-10vw", y: "10vh", scale: 0.52, rotation: -16 },
-  vMint: { x: "10vw", y: "10vh", scale: 0.52, rotation: 16 },
-};
-
-const MOBILE: Config = {
-  heroMint: { x: "2vw", y: "10vh", scale: 0.55, rotation: 8 },
-  heroPeri: { x: "-26vw", y: "10vh", scale: 0.55, rotation: -8 },
-  cardScale: 0.75,
-  cardRotMint: -3,
-  cardRotPeri: 3,
-  vPeri: { x: "-45vw", y: "16vh", scale: 0.6, rotation: -14 },
-  vMint: { x: "-15vw", y: "16vh", scale: 0.6, rotation: 14 },
-};
 
 export function LandingPage() {
   const rootRef = useRef<HTMLElement | null>(null);
@@ -69,20 +27,10 @@ export function LandingPage() {
 
     if (reduceMotion) {
       gsap.set(root.querySelectorAll(".reveal"), { autoAlpha: 1, y: 0 });
-      const m = document.querySelector<HTMLElement>('[data-product="mint"]');
-      const p = document.querySelector<HTMLElement>('[data-product="peri"]');
-      if (m && p) {
-        gsap.set(m, { ...DESKTOP.heroMint, autoAlpha: 1 });
-        gsap.set(p, { ...DESKTOP.heroPeri, autoAlpha: 1 });
-      }
       return;
     }
 
-    /* ─────────────────────────────────────────────────────────
-       1. Lenis smooth-scroll, hard-synced with GSAP ticker.
-          If you already initialize Lenis in a layout/provider,
-          DELETE this whole block (until the marker below).
-    ──────────────────────────────────────────────────────────── */
+    /* ─── Lenis smooth-scroll, hard-synced with GSAP ─── */
     const lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -96,21 +44,12 @@ export function LandingPage() {
     const tickerFn = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tickerFn);
     gsap.ticker.lagSmoothing(0);
-    /* ── end of Lenis block ────────────────────────────────── */
 
-    /* Global perf defaults */
     gsap.defaults({ overwrite: "auto" });
     ScrollTrigger.config({ ignoreMobileResize: true });
 
     const ctx = gsap.context(() => {
-      const mint = document.querySelector<HTMLElement>('[data-product="mint"]');
-      const peri = document.querySelector<HTMLElement>('[data-product="peri"]');
-      if (!mint || !peri) return;
-
-      /* Promote the moving products to their own GPU layers */
-      gsap.set([mint, peri], { force3D: true, willChange: "transform" });
-
-      /* ─── Batched reveals (one trigger, not 30+) ─────────── */
+      /* Batched scroll reveals for the sections AFTER the hero */
       ScrollTrigger.batch(".reveal", {
         start: "top 85%",
         once: true,
@@ -125,7 +64,7 @@ export function LandingPage() {
           }),
       });
 
-      /* ─── Ambient motion (auto-paused when tab not visible) ─ */
+      /* Floating decor leaves (only used by OrganicDecor, not the hero) */
       const floatLeaves = gsap.to(".float-leaf", {
         y: "random(-18, 18)",
         x: "random(-10, 10)",
@@ -137,232 +76,17 @@ export function LandingPage() {
         stagger: 0.2,
       });
 
-      const packs = gsap.to(".product-pack", {
-        y: "+=14",
-        rotation: "+=1.5",
-        duration: 3.8,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut",
-        stagger: 0.45,
-      });
-
       const onVisChange = () => {
-        if (document.hidden) {
-          floatLeaves.pause();
-          packs.pause();
-        } else {
-          floatLeaves.play();
-          packs.play();
-        }
+        if (document.hidden) floatLeaves.pause();
+        else floatLeaves.play();
       };
       document.addEventListener("visibilitychange", onVisChange);
 
-      /* ─── Pinning (invalidate on refresh prevents stale layout) ─ */
-      ScrollTrigger.create({
-        trigger: "[data-pin='hero']",
-        start: "top top",
-        end: "+=42%",
-        pin: true,
-        pinSpacing: false,
-        invalidateOnRefresh: true,
-      });
-      ScrollTrigger.create({
-        trigger: "[data-pin='products']",
-        start: "top top",
-        end: "+=55%",
-        pin: true,
-        pinSpacing: true,
-        invalidateOnRefresh: true,
-      });
-      ScrollTrigger.create({
-        trigger: "[data-pin='cta']",
-        start: "top top",
-        end: "+=100%",
-        pin: true,
-        pinSpacing: true,
-        invalidateOnRefresh: true,
-      });
-
-      const mm = gsap.matchMedia();
-
-      const build = (cfg: Config) => {
-        gsap.set(mint, { ...cfg.heroMint, autoAlpha: 1 });
-        gsap.set(peri, { ...cfg.heroPeri, autoAlpha: 1 });
-
-        gsap.from(peri, {
-          autoAlpha: 0,
-          scale: cfg.heroPeri.scale * 0.8,
-          duration: 1.1,
-          ease: "power3.out",
-        });
-        gsap.from(mint, {
-          autoAlpha: 0,
-          scale: cfg.heroMint.scale * 0.8,
-          duration: 1.1,
-          ease: "power3.out",
-          delay: 0.08,
-        });
-
-        const toHero = () => {
-          gsap.to(peri, {
-            ...cfg.heroPeri,
-            autoAlpha: 1,
-            duration: 0.6,
-            ease: "power3.out",
-            overwrite: "auto",
-          });
-          gsap.to(mint, {
-            ...cfg.heroMint,
-            autoAlpha: 1,
-            duration: 0.6,
-            ease: "power3.out",
-            overwrite: "auto",
-          });
-        };
-
-        const hide = () => {
-          gsap.to([mint, peri], {
-            autoAlpha: 0,
-            duration: 0.35,
-            ease: "power2.out",
-            overwrite: "auto",
-          });
-        };
-
-        const landOn = (
-          bag: HTMLElement,
-          target: Element,
-          scale: number,
-          rotation: number,
-          fromLeft: boolean,
-        ) => {
-          gsap.set(bag, {
-            x: fromLeft ? "-80vw" : "80vw",
-            y: "0vh",
-            scale,
-            rotation,
-            autoAlpha: 1,
-          });
-          const t = target.getBoundingClientRect();
-          const b = bag.getBoundingClientRect();
-          const dx = t.left + t.width / 2 - (b.left + b.width / 2);
-          const dy = t.top + t.height / 2 - (b.top + b.height / 2) - 120;
-          gsap.to(bag, {
-            x: "+=" + dx,
-            y: "+=" + dy,
-            duration: 0.85,
-            ease: "power3.out",
-            overwrite: "auto",
-          });
-        };
-
-        const toCards = () => {
-          /* Read DOM after the pin has settled */
-          requestAnimationFrame(() => {
-            const cards = Array.from(
-              document.querySelectorAll<HTMLElement>(
-                "[data-pin='products'] .product-card",
-              ),
-            );
-            if (cards.length < 2) return;
-            const [first, second] = cards;
-            if (!first || !second) return;
-            const mockOf = (c: HTMLElement) =>
-              c.querySelector<HTMLElement>("[class*='rounded-[1.8rem]']") ?? c;
-            landOn(mint, mockOf(first), cfg.cardScale, cfg.cardRotMint, true);
-            landOn(peri, mockOf(second), cfg.cardScale, cfg.cardRotPeri, false);
-          });
-        };
-
-        const toV = () => {
-          gsap.set(peri, {
-            x: "85vw",
-            y: cfg.vPeri.y,
-            scale: cfg.vPeri.scale,
-            rotation: cfg.vPeri.rotation,
-            autoAlpha: 1,
-          });
-          gsap.set(mint, {
-            x: "85vw",
-            y: cfg.vMint.y,
-            scale: cfg.vMint.scale,
-            rotation: cfg.vMint.rotation,
-            autoAlpha: 1,
-          });
-          gsap.to(peri, {
-            x: cfg.vPeri.x,
-            duration: 0.8,
-            ease: "power3.out",
-            overwrite: "auto",
-          });
-          gsap.to(mint, {
-            x: cfg.vMint.x,
-            duration: 0.8,
-            ease: "power3.out",
-            delay: 0.06,
-            overwrite: "auto",
-          });
-        };
-
-        /* fastScrollEnd + preventOverlaps:
-           - fastScrollEnd forces the leave callback to fire even
-             if the user scroll-blasts past a section
-           - preventOverlaps groups these triggers so only the most
-             recent one's callbacks "win" — no more racing tweens. */
-        ScrollTrigger.create({
-          trigger: "#about",
-          start: "top 70%",
-          fastScrollEnd: true,
-          preventOverlaps: "products",
-          onEnter: hide,
-          onLeaveBack: toHero,
-        });
-
-        ScrollTrigger.create({
-          trigger: "[data-pin='products']",
-          start: "top top",
-          end: "+=55%",
-          fastScrollEnd: true,
-          preventOverlaps: "products",
-          onEnter: toCards,
-          onEnterBack: toCards,
-          onLeave: hide,
-          onLeaveBack: hide,
-        });
-
-        ScrollTrigger.create({
-          trigger: "[data-pin='cta']",
-          start: "top top",
-          end: "+=80%",
-          fastScrollEnd: true,
-          preventOverlaps: "products",
-          onEnter: toV,
-          onEnterBack: toV,
-          onLeave: hide,
-          onLeaveBack: hide,
-        });
-      };
-
-      mm.add("(min-width: 1024px)", () => build(DESKTOP));
-      mm.add("(min-width: 640px) and (max-width: 1023.98px)", () =>
-        build(TABLET),
-      );
-      mm.add("(max-width: 639.98px)", () => build(MOBILE));
-
-      /* Refresh after fonts + images settle — fixes the
-         "wrong positions on first load" problem. */
       const refresh = () => ScrollTrigger.refresh();
-      if (document.readyState === "complete") {
-        refresh();
-      } else {
-        window.addEventListener("load", refresh, { once: true });
-      }
-      if (document.fonts?.ready) {
-        document.fonts.ready.then(refresh);
-      }
+      if (document.readyState === "complete") refresh();
+      else window.addEventListener("load", refresh, { once: true });
+      if (document.fonts?.ready) document.fonts.ready.then(refresh);
 
-      /* Local cleanup for the visibility listener */
       return () => {
         document.removeEventListener("visibilitychange", onVisChange);
       };
@@ -378,45 +102,7 @@ export function LandingPage() {
 
   return (
     <main ref={rootRef} className="relative bg-cream">
-      <ProductStage />
-
-      <Section
-        id="home"
-        tone="cream"
-        data-pin="hero"
-        className="flex items-center"
-      >
-        <OrganicDecor />
-        <div className="relative z-10 mx-auto grid w-full max-w-6xl px-6 pb-24 pt-32 md:grid-cols-[1.1fr_0.9fr] md:items-center md:px-8 lg:pt-40">
-          <div className="max-w-3xl">
-            <p className="reveal text-xs font-semibold uppercase tracking-[0.32em] text-gold">
-              Premium roasted makhana
-            </p>
-            <h1 className="reveal mt-6 font-serif text-[clamp(4.2rem,11vw,9.5rem)] font-semibold leading-[0.82] text-forest text-balance">
-              Nature&apos;s Crunch, Perfectly Harvested.
-            </h1>
-            <p className="reveal mt-8 max-w-xl text-base leading-8 text-forest/68 md:text-lg">
-              Premium roasted makhana crafted with wholesome ingredients and
-              bold flavors.
-            </p>
-            <div className="reveal mt-10 flex flex-wrap gap-4">
-              <a
-                href="#products"
-                className="rounded-full bg-forest px-7 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-cream transition hover:bg-botanical"
-              >
-                Explore Flavors
-              </a>
-              <a
-                href="#about"
-                className="rounded-full border border-forest/20 px-7 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-forest transition hover:border-forest/45 hover:bg-white/35"
-              >
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 z-10 h-px w-24 -translate-x-1/2 bg-forest/20" />
-      </Section>
+      <HeroSection />
 
       <Section id="about" tone="green" className="flex items-center py-28">
         <OrganicDecor variant="quiet" />
@@ -441,25 +127,28 @@ export function LandingPage() {
         </div>
       </Section>
 
-      <Section
-        id="products"
-        tone="warm"
-        data-pin="products"
-        className="flex items-center py-28"
-      >
+      <Section id="products" tone="warm" className="flex items-center py-28">
         <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#eaf0df] to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-8">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-4xl text-center">
             <p className="reveal text-xs font-semibold uppercase tracking-[0.28em] text-earth">
               Current flavors
             </p>
             <h2 className="reveal mt-5 font-serif text-6xl font-semibold leading-none text-forest md:text-8xl">
-              Two bold paths to a better crunch.
+              A flavor for every kind of crunch.
             </h2>
           </div>
-          <div className="mt-16 grid gap-6 md:grid-cols-2">
+          <div
+            className="scrollbar-hide -mx-6 mt-16 flex cursor-grab snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain px-6 pb-10 active:cursor-grabbing md:-mx-8 md:gap-6 md:px-8"
+            aria-label="Glen Harvest product flavors"
+          >
             {flavors.map((flavor) => (
-              <ProductCard key={flavor.id} flavor={flavor} />
+              <div
+                key={flavor.id}
+                className="w-[84vw] max-w-[32rem] shrink-0 snap-start sm:w-[68vw] lg:w-[calc((100%-1.5rem)/2)] lg:max-w-none"
+              >
+                <ProductCard flavor={flavor} />
+              </div>
             ))}
           </div>
         </div>
@@ -514,12 +203,7 @@ export function LandingPage() {
         </div>
       </Section>
 
-      <Section
-        id="contact"
-        tone="cream"
-        data-pin="cta"
-        className="flex items-center py-28"
-      >
+      <Section id="contact" tone="cream" className="flex items-center py-28">
         <OrganicDecor />
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:px-8">
           <p className="reveal text-xs font-semibold uppercase tracking-[0.3em] text-gold">
@@ -546,6 +230,257 @@ export function LandingPage() {
   );
 }
 
+/* ───────────────────────────────────────────────────────────
+   Hero — fully static. No animation, no floating, no GSAP.
+   Asset mapping:
+     raw.png         → product pack (big, right column)
+     makhana 2.png   → woman with bowl (small, landscape)
+     makhana.png     → bowl of laddoo-style makhana (landscape)
+     bird.png        → archway + bird perched on top (far left of landscape)
+     tree.png        → single tree element (landscape)
+     tree-bg.png     → full-width tree-line backdrop (landscape)
+     sun.png         → orange sun glyph (placed in sky, static)
+     house.png       → small house (landscape)
+     cow.png         → decorative cow (far right of landscape)
+     lotus.png       → lotus flower (landscape)
+     cloud.png       → small cloud (scattered in sky)
+─────────────────────────────────────────────────────────── */
+function HeroSection() {
+  const HERO_IMG = "/images/home hero";
+
+  // Static cloud placements — three on each side of the headline.
+  const clouds = [
+    { top: "18%", left: "-1%", width: 320, opacity: 0.55 },
+
+    { top: "62%", left: "38%", width: 320, opacity: 0.55 },
+    { top: "24%", left: "63%", width: 320, opacity: 0.6 },
+    { top: "70%", left: "86%", width: 320, opacity: 0.5 },
+  ];
+
+  return (
+    <section
+      id="home"
+      className="relative isolate overflow-hidden bg-[#F0DEC2] text-forest"
+      style={{ height: "100vh", minHeight: "720px" }}
+    >
+      {/* Paper noise */}
+      <div className="noise-overlay pointer-events-none absolute inset-0 z-0" />
+
+      {/* ─── Sky: scattered clouds ─── */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-1/2">
+        {clouds.map((c, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              top: c.top,
+              left: c.left,
+              width: c.width,
+              opacity: c.opacity,
+            }}
+          >
+            <Image
+              src={`${HERO_IMG}/cloud.png`}
+              alt=""
+              width={c.width}
+              height={Math.round(c.width * 0.55)}
+              className="h-auto w-full select-none"
+              draggable={false}
+              priority={i < 2}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* ─── Sun (static, sitting in the sky just above the landscape) ─── */}
+      <div
+        className="pointer-events-none absolute z-10"
+        style={{
+          left: "21%",
+          bottom: "min(6vh, 32rem)",
+          width: "44%",
+        }}
+      >
+        <Image
+          src={`${HERO_IMG}/sun.png`}
+          alt=""
+          width={350}
+          height={350}
+          className="h-auto w-full select-none"
+          draggable={false}
+        />
+      </div>
+
+      {/* ─── Content (wordmark + headline + CTAs + pack) ─── */}
+      <div
+        className="absolute inset-x-0 z-20"
+        style={{ top: "6.5rem", bottom: "min(36vh, 19rem)" }}
+      >
+        <div className="mx-auto grid h-full max-w-7xl items-center gap-6 px-6 md:grid-cols-[1.05fr_0.95fr] md:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
+          {/* Left */}
+          <div className="max-w-xl 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
+            <p
+              className="font-serif text-4xl font-bold leading-[0.95] text-forest md:text-5xl lg:text-[3.5rem] 2xl:text-[clamp(3rem,2.7vw,4.25rem)]"
+              style={{ letterSpacing: "-0.015em" }}
+            >
+              Glen
+              <br />
+              Harvest
+            </p>
+
+            <h1 className="mt-5 font-serif text-[clamp(2.25rem,4.6vw,3.9rem)] leading-[1.02] 2xl:mt-6 2xl:text-[clamp(3.25rem,3vw,4.75rem)]">
+              <span className="block font-extrabold text-[#2C3D2A]">
+                Tradition in
+                <br />
+                every bite,
+              </span>
+              <span className="mt-1 block font-extrabold text-[#7A341E]">
+                Nutrition in
+                <br />
+                every grain.
+              </span>
+            </h1>
+          </div>
+
+          {/* Right — product pack (raw.png IS the pack) */}
+          <div className="relative flex h-full items-end justify-center md:justify-center 2xl:translate-y-[5vh]">
+            <div className="relative bottom-[-8%] left-[14%] w-[15rem] md:w-[20rem] lg:w-[24rem] xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
+              <Image
+                src={`${HERO_IMG}/raw.png`}
+                alt="Glen Harvest High Protein Makhana"
+                width={420}
+                height={340}
+                priority
+                className="h-auto w-full select-none object-contain drop-shadow-[0_30px_50px_rgba(60,30,10,0.18)]"
+                draggable={false}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ─── Landscape band ─── */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10"
+        style={{ height: "min(38vh, 20rem)" }}
+      >
+        {/* Tree-line backdrop, full width */}
+        <div className="absolute inset-x-0 bottom-0 h-full">
+          <Image
+            src={`${HERO_IMG}/tree-bg.png`}
+            alt=""
+            width={2172}
+            height={724}
+            sizes="100vw"
+            className="absolute inset-x-0 bottom-0 h-full w-full select-none object-cover object-bottom 2xl:h-auto"
+            draggable={false}
+            priority
+          />
+        </div>
+
+        {/* Diorama layered above the tree-line */}
+        <div className="absolute inset-x-0 bottom-0 h-full">
+          {/* Archway + bird (single asset) — far left */}
+          <div className="absolute bottom-[-24] left-[1%] w-[7.5rem] md:w-[9rem] lg:w-[16.5rem]">
+            <Image
+              src={`${HERO_IMG}/bird.png`}
+              alt=""
+              width={240}
+              height={380}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+
+          {/* Lotus */}
+          <div className="absolute bottom-[-24] left-[14%] w-14 md:w-16 lg:w-34">
+            <Image
+              src={`${HERO_IMG}/lotus.png`}
+              alt=""
+              width={140}
+              height={140}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+
+          {/* Woman with bowl (makhana 2) */}
+          <div className="absolute bottom-1 left-[26%] w-[6.5rem] md:w-[8rem] lg:w-[11rem]">
+            <Image
+              src={`${HERO_IMG}/makhana 2.png`}
+              alt=""
+              width={260}
+              height={200}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+
+          {/* Bowl of makhana (next to the woman) */}
+          <div className="absolute bottom-2 left-[42%] hidden w-14 sm:block md:w-16 lg:w-22">
+            <Image
+              src={`${HERO_IMG}/makhana.png`}
+              alt=""
+              width={160}
+              height={140}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+
+          {/* House */}
+          <div className="absolute bottom-10 left-[47%] w-20 md:w-24 lg:w-39">
+            <Image
+              src={`${HERO_IMG}/house.png`}
+              alt=""
+              width={220}
+              height={200}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+
+          {/* Mid tree */}
+          <div className="absolute bottom-0 left-[58%] hidden w-[5.5rem] md:block md:w-[6.5rem] lg:w-[7.5rem]">
+            <Image
+              src={`${HERO_IMG}/tree.png`}
+              alt=""
+              width={180}
+              height={300}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+
+          {/* Right tree */}
+          <div className="absolute bottom-0 left-[74%] hidden w-[5rem] md:block md:w-[6rem] lg:w-[7rem]">
+            <Image
+              src={`${HERO_IMG}/tree.png`}
+              alt=""
+              width={180}
+              height={300}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+
+          {/* Cow */}
+          <div className="absolute bottom-[-12%] right-[-1%] w-[6.5rem] md:w-[8rem] lg:w-[14rem] scale-x-[-1] ">
+            <Image
+              src={`${HERO_IMG}/cow.png`}
+              alt=""
+              width={220}
+              height={180}
+              className="h-auto w-full select-none"
+              draggable={false}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function OrganicDecor({
   variant = "hero",
 }: {
@@ -553,8 +488,6 @@ function OrganicDecor({
 }) {
   const muted = variant === "quiet";
 
-  /* Reduced blur radius + GPU-promoted via transform.
-     The old `blur-2xl` on 34rem blobs was the #1 paint cost. */
   return (
     <>
       <div

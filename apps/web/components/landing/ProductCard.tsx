@@ -4,23 +4,25 @@ import type { Flavor } from "@/lib/landing-data";
 export function ProductCard({ flavor }: { flavor: Flavor }) {
   return (
     <article
-      className="product-card reveal group relative overflow-hidden rounded-lg p-6 text-cream shadow-premium transition duration-500 hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_30px_90px_rgba(29,45,33,0.24)]"
+      className="product-card reveal group relative flex h-full flex-col overflow-hidden rounded-lg p-6 text-cream shadow-premium transition duration-500 hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_30px_90px_rgba(29,45,33,0.24)]"
       style={{
         background: `linear-gradient(150deg, ${flavor.palette.base}, ${flavor.palette.deep})`,
       }}
     >
       <div className="absolute right-0 top-0 h-40 w-40 -translate-y-12 translate-x-12 rounded-full bg-white/10 blur-2xl transition duration-500 group-hover:scale-125" />
 
-      <div className="relative mx-auto h-72 w-52 md:h-96 md:w-64">
+      <div className="relative mx-auto h-72 w-full md:h-96">
         <Image
-          src={
-            flavor.id === "mint"
-              ? "/images/products/mint-pack.png"
-              : "/images/products/peri-pack.png"
-          }
+          src={flavor.image}
           alt={flavor.name}
           fill
-          className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)] transition duration-500 group-hover:scale-105"
+          unoptimized
+          sizes="(min-width: 1024px) 34rem, (min-width: 640px) 70vw, 84vw"
+          className={`object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)] transition duration-500 group-hover:scale-105 ${
+            flavor.id === "raw"
+              ? "scale-125 group-hover:scale-[1.3]"
+              : "scale-[1.55] group-hover:scale-[1.62]"
+          }`}
         />
       </div>
 
@@ -30,7 +32,7 @@ export function ProductCard({ flavor }: { flavor: Flavor }) {
 
       <h3 className="mt-3 font-serif text-5xl font-semibold">{flavor.name}</h3>
 
-      <p className="mt-4 min-h-20 text-sm leading-7 text-cream/72">
+      <p className="mt-4 min-h-20 flex-1 text-sm leading-7 text-cream/72">
         {flavor.description}
       </p>
 

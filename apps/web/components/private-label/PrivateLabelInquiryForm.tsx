@@ -33,19 +33,6 @@ export default function PrivateLabelInquiryForm() {
     <Section id="inquiry" tone="cream" className="flex items-center py-28">
       <OrganicDecor variant="care" />
 
-      {/* Decorative product packet floating in background */}
-      <div className="absolute right-[-8%] top-[10%] hidden opacity-30 lg:block">
-        <div className="relative h-[28rem] w-[20rem] rotate-12">
-          <Image
-            src="/images/products/mint-masti.png"
-            alt=""
-            fill
-            className="object-contain"
-            aria-hidden="true"
-          />
-        </div>
-      </div>
-
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
