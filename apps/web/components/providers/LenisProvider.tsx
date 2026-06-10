@@ -19,6 +19,8 @@ export default function LenisProvider({
       smoothWheel: true,
     });
 
+    (window as any).lenis = lenis;
+
     // Sync Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -30,6 +32,7 @@ export default function LenisProvider({
 
     return () => {
       lenis.destroy();
+      delete (window as any).lenis;
     };
   }, []);
 

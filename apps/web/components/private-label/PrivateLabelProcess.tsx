@@ -52,7 +52,7 @@ export default function PrivateLabelProcess() {
                 className="reveal flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-10"
               >
                 <div className="flex shrink-0 items-center gap-4">
-                  <div className="relative h-[22px] w-[22px] rounded-full bg-gold" />
+                  <div className="relative h-5.5 w-5.5 rounded-full bg-gold" />
                   <span className="font-sans text-xs font-semibold tracking-wider text-gold">
                     {item.step}
                   </span>

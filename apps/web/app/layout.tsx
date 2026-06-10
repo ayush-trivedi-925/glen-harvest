@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import LenisProvider from "@/components/providers/LenisProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/shared/ScrollToTop";
+import BackToTopButton from "@/components/shared/BackToTopButton";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -32,9 +34,11 @@ export default function RootLayout({
     <html lang="en" className={cn(poppins.variable, cormorant.variable)}>
       <body className="font-sans bg-brand-cream text-brand-text min-h-screen flex flex-col">
         <LenisProvider>
+          <ScrollToTop />
           <Navbar />
           <main className="grow">{children}</main>
           <Footer />
+          <BackToTopButton />
         </LenisProvider>
       </body>
     </html>
