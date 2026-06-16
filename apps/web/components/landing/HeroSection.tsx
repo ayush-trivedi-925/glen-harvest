@@ -86,21 +86,21 @@ export function HeroSection() {
       </div>
 
       {/* ─── Content (wordmark + headline + CTAs + pack) ─── */}
-      <div
-        className="absolute inset-x-0 z-20"
-        style={{ top: "6.5rem", bottom: "min(36vh, 19rem)" }}
-      >
-        <div className="mx-auto grid h-full max-w-7xl items-center gap-6 px-6 sm:grid-cols-[1.05fr_0.95fr] sm:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
+      <div className="absolute inset-x-0 z-20 top-[6.5rem] bottom-0 sm:bottom-[min(36vh,19rem)]">
+        <div className="mx-auto flex h-full max-w-7xl flex-col px-6 sm:grid sm:items-center sm:gap-6 sm:grid-cols-[1.05fr_0.95fr] sm:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
           {/* Left */}
-          <div className="mx-auto max-w-xl text-center sm:mx-0 sm:text-left 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
+          <div className="mx-auto flex max-w-xl flex-1 flex-col items-center justify-center text-center sm:mx-0 sm:block sm:flex-none sm:text-left 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
             <p
               data-hero-wordmark
               className="hidden font-serif text-4xl font-bold leading-[0.95] text-forest sm:block sm:text-5xl lg:text-[3.5rem] 2xl:text-[clamp(3rem,2.7vw,4.25rem)]"
               style={{ letterSpacing: "-0.015em" }}
             >
-              Glen
-              <br />
-              Harvest
+              <Image
+                src={`${HERO_IMG}/glen-harvest.png`}
+                width={200}
+                height={200}
+                alt="Glen harvest title"
+              />
             </p>
 
             <h1
@@ -121,8 +121,8 @@ export function HeroSection() {
           </div>
 
           {/* Right — product pack (raw.png IS the pack) */}
-          <div className="relative flex h-full items-end justify-center md:justify-center 2xl:translate-y-[5vh]">
-            <div className="relative bottom-[-8%] left-0 w-[15rem] sm:left-[14%] md:w-[20rem] lg:w-[24rem] xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
+          <div className="relative flex justify-center pb-[11vh] sm:h-full sm:items-end sm:pb-0 md:justify-center 2xl:translate-y-[5vh]">
+            <div className="relative bottom-0 left-0 w-[16rem] sm:bottom-[-8%] sm:left-[14%] md:w-[20rem] lg:w-[24rem]  xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
               <Image
                 src={`${HERO_IMG}/raw.png`}
                 alt="Glen Harvest High Protein Makhana"

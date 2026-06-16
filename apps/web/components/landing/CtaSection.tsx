@@ -17,8 +17,7 @@ export function CtaSection() {
     <Section
       id="contact"
       tone="cream"
-      className="flex items-center py-28"
-      style={{ minHeight: "115vh" }}
+      className="flex items-center py-16 min-h-[82vh]! lg:py-28 lg:min-h-[112vh]!"
     >
       <OrganicDecor />
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center md:px-8">
@@ -47,7 +46,7 @@ export function CtaSection() {
          transparent margins so each shows at a consistent size. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] flex translate-y-[50%] items-end justify-between px-[3vw] md:px-[5vw]"
+        className="pointer-events-none absolute inset-x-[-90] bottom-0 z-[5] flex translate-y-[50%] items-end justify-between px-[3vw] md:px-[5vw]"
       >
         {packs.map((file) => {
           // The source frames have transparent margin around each pack, so
@@ -58,7 +57,7 @@ export function CtaSection() {
           return (
             <div
               key={file}
-              className="relative aspect-square w-[13%] shrink-0 overflow-hidden"
+              className="relative aspect-square w-[15%] shrink-0 overflow-hidden md:w-[14%] lg:w-[13%]"
             >
               <Image
                 src={`/images/products/${file}`}

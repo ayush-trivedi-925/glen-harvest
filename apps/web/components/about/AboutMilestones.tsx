@@ -68,12 +68,14 @@ export default function AboutMilestones() {
             return (
               <li
                 key={m.year}
-                className={`reveal relative mb-12 grid grid-cols-[3rem_1fr] gap-6 md:mb-16 md:grid-cols-2 md:gap-12 ${
-                  isRight ? "md:[&>*:first-child]:order-2" : ""
-                }`}
+                className="reveal relative mb-12 grid grid-cols-[3rem_1fr] gap-6 md:mb-16 md:grid-cols-2 md:gap-12"
               >
                 {/* Year + node */}
-                <div className="relative flex md:justify-end">
+                <div
+                  className={`relative flex md:justify-end ${
+                    isRight ? "md:order-2" : ""
+                  }`}
+                >
                   <div
                     className={`flex w-full max-w-xs items-center gap-4 ${
                       isRight ? "" : "md:flex-row-reverse md:text-right"

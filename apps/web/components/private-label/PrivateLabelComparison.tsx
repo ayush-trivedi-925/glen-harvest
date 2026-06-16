@@ -54,78 +54,131 @@ export default function PrivateLabelComparison() {
         </div>
 
         {/* Comparison */}
-        <div className="reveal mt-16 overflow-hidden rounded-3xl border border-forest/10 bg-white/55 shadow-soft backdrop-blur-sm">
-          {/* Header */}
-          <div className="grid grid-cols-[1.1fr_1fr_1fr] items-stretch border-b border-forest/12 bg-cream/70 md:grid-cols-[1.2fr_1fr_1fr]">
-            <div className="px-5 py-5 md:px-8 md:py-7">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-forest/55">
-                Dimension
-              </p>
+        <div className="reveal mt-16">
+          {/* Tablet & up — table */}
+          <div className="hidden overflow-hidden rounded-3xl border border-forest/10 bg-white/55 shadow-soft backdrop-blur-sm md:block">
+            {/* Header */}
+            <div className="grid grid-cols-[1.2fr_1fr_1fr] items-stretch border-b border-forest/12 bg-cream/70">
+              <div className="px-5 py-5 md:px-8 md:py-7">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-forest/55">
+                  Dimension
+                </p>
+              </div>
+              <div className="border-l border-forest/12 px-5 py-5 md:px-8 md:py-7">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-forest/50">
+                  Doing it yourself
+                </p>
+                <p className="mt-1 font-serif text-lg font-semibold text-forest/65 md:text-xl">
+                  In-house build
+                </p>
+              </div>
+              <div className="relative border-l border-forest/12 bg-forest px-5 py-5 text-cream md:px-8 md:py-7">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold">
+                  Recommended
+                </p>
+                <p className="mt-1 font-serif text-lg font-semibold md:text-xl">
+                  With Glen Harvest
+                </p>
+                <span className="absolute top-2 right-4 rounded-full bg-gold px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-forest">
+                  Faster · Cheaper
+                </span>
+              </div>
             </div>
-            <div className="border-l border-forest/12 px-5 py-5 md:px-8 md:py-7">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-forest/50">
-                Doing it yourself
-              </p>
-              <p className="mt-1 font-serif text-lg font-semibold text-forest/65 md:text-xl">
-                In-house build
-              </p>
-            </div>
-            <div className="relative border-l border-forest/12 bg-forest px-5 py-5 text-cream md:px-8 md:py-7">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold">
-                Recommended
-              </p>
-              <p className="mt-1 font-serif text-lg font-semibold md:text-xl">
-                With Glen Harvest
-              </p>
-              <span className="absolute top-2 right-4 rounded-full bg-gold px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-forest">
-                Faster · Cheaper
-              </span>
-            </div>
+
+            {/* Rows */}
+            {rows.map((row, index) => (
+              <div
+                key={row.dimension}
+                className={`grid grid-cols-[1.2fr_1fr_1fr] items-stretch ${
+                  index !== rows.length - 1 ? "border-b border-forest/10" : ""
+                }`}
+              >
+                <div className="px-5 py-5 md:px-8 md:py-6">
+                  <p className="font-serif text-base font-semibold text-forest md:text-lg">
+                    {row.dimension}
+                  </p>
+                </div>
+                <div className="border-l border-forest/10 px-5 py-5 md:px-8 md:py-6">
+                  <p className="flex items-start gap-3 text-sm leading-7 text-forest/60 md:text-base">
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 inline-block h-3 w-3 shrink-0 rounded-full border-[1.5px] border-forest/35"
+                    />
+                    {row.diy}
+                  </p>
+                </div>
+                <div className="border-l border-forest/10 bg-forest/4 px-5 py-5 md:px-8 md:py-6">
+                  <p className="flex items-start gap-3 text-sm leading-7 text-forest/82 md:text-base">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="mt-1 h-4 w-4 shrink-0 text-gold"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12l5 5L20 7"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    {row.ours}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Rows */}
-          {rows.map((row, index) => (
-            <div
-              key={row.dimension}
-              className={`grid grid-cols-[1.1fr_1fr_1fr] items-stretch md:grid-cols-[1.2fr_1fr_1fr] ${
-                index !== rows.length - 1 ? "border-b border-forest/10" : ""
-              }`}
-            >
-              <div className="px-5 py-5 md:px-8 md:py-6">
-                <p className="font-serif text-base font-semibold text-forest md:text-lg">
-                  {row.dimension}
-                </p>
-              </div>
-              <div className="border-l border-forest/10 px-5 py-5 md:px-8 md:py-6">
-                <p className="flex items-start gap-3 text-sm leading-7 text-forest/60 md:text-base">
-                  <span
-                    aria-hidden="true"
-                    className="mt-1.5 inline-block h-3 w-3 shrink-0 rounded-full border-[1.5px] border-forest/35"
-                  />
-                  {row.diy}
-                </p>
-              </div>
-              <div className="border-l border-forest/10 bg-forest/4 px-5 py-5 md:px-8 md:py-6">
-                <p className="flex items-start gap-3 text-sm leading-7 text-forest/82 md:text-base">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="mt-1 h-4 w-4 shrink-0 text-gold"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M5 12l5 5L20 7"
-                      stroke="currentColor"
-                      strokeWidth="2.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+          {/* Mobile — stacked cards */}
+          <div className="space-y-5 md:hidden">
+            {rows.map((row) => (
+              <div
+                key={row.dimension}
+                className="overflow-hidden rounded-2xl border border-forest/10 bg-white/55 shadow-soft backdrop-blur-sm"
+              >
+                <div className="border-b border-forest/10 bg-cream/70 px-5 py-4">
+                  <p className="font-serif text-lg font-semibold text-forest">
+                    {row.dimension}
+                  </p>
+                </div>
+                <div className="px-5 py-4">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-forest/45">
+                    Doing it yourself
+                  </p>
+                  <p className="mt-2 flex items-start gap-3 text-sm leading-7 text-forest/60">
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 inline-block h-3 w-3 shrink-0 rounded-full border-[1.5px] border-forest/35"
                     />
-                  </svg>
-                  {row.ours}
-                </p>
+                    {row.diy}
+                  </p>
+                </div>
+                <div className="bg-forest px-5 py-4 text-cream">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold">
+                    With Glen Harvest
+                  </p>
+                  <p className="mt-2 flex items-start gap-3 text-sm leading-7 text-cream/85">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="mt-1 h-4 w-4 shrink-0 text-gold"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12l5 5L20 7"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    {row.ours}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="reveal mt-10 flex flex-col items-center gap-4 text-center">
