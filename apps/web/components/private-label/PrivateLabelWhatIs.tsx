@@ -10,7 +10,7 @@ export default function PrivateLabelWhatIs() {
         <div className="reveal relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-premium">
             <Image
-              src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=1000&q=80"
+              src="/images/placeholder-images/pumpkin_seeds-h.jpg"
               alt="Custom packaging"
               fill
               className="object-cover"

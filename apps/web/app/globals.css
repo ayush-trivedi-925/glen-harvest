@@ -214,6 +214,17 @@
   text-wrap: balance;
 }
 
+/* Portrait tablets are tall, so the landscape hero composition stretches
+   out with a big gap. Shorten the hero on portrait so the text, pack, and
+   landscape sit close together. Desktop monitors are landscape, so this
+   never affects them; phones (< 640px) keep the full-height stacked hero. */
+@media (min-width: 640px) and (orientation: portrait) {
+  .hero-shell {
+    height: 78vh;
+    min-height: 620px;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(28px);

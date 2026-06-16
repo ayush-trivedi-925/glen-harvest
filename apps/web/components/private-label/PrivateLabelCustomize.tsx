@@ -44,7 +44,7 @@ export default function PrivateLabelCustomize() {
             <div className="grid grid-cols-2 gap-4">
               <div className="parallax-slow relative aspect-3/4 overflow-hidden rounded-2xl shadow-premium">
                 <Image
-                  src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=800&q=80"
+                  src="/images/placeholder-images/collage.jpg"
                   alt="Custom pouch packaging"
                   fill
                   className="object-cover"
@@ -53,7 +53,7 @@ export default function PrivateLabelCustomize() {
               <div className="space-y-4">
                 <div className="relative aspect-square overflow-hidden rounded-2xl shadow-premium">
                   <Image
-                    src="https://images.unsplash.com/photo-1558438102-64c19e995a44?w=800&q=80"
+                    src="/images/placeholder-images/pistachio-wood-tray-h.jpg"
                     alt="Custom tin packaging"
                     fill
                     className="object-cover"
@@ -61,7 +61,7 @@ export default function PrivateLabelCustomize() {
                 </div>
                 <div className="relative aspect-5/6 overflow-hidden rounded-2xl shadow-premium">
                   <Image
-                    src="https://images.unsplash.com/photo-1593001872095-7d5b3868fb1d?w=800&q=80"
+                    src="/images/placeholder-images/pista-p.jpg"
                     alt="Custom flavor blends"
                     fill
                     className="object-cover"

@@ -11,7 +11,7 @@ export default function AboutMission() {
         <div className="reveal relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-premium">
             <Image
-              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1000&q=80"
+              src="/images/placeholder-images/pistachio-blue-p.jpg"
               alt="Aquatic farms in Bihar"
               fill
               className="object-cover"

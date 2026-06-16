@@ -62,7 +62,7 @@ export default function AboutHero() {
 
             <div className="parallax-slow relative h-[28rem] w-[20rem] overflow-hidden rounded-2xl shadow-premium md:h-[34rem] md:w-[24rem]">
               <Image
-                src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1000&q=80"
+                src="/images/placeholder-images/nuts-red-h.jpg"
                 alt="Aquatic farms in Bihar"
                 fill
                 className="object-cover"
@@ -97,7 +97,7 @@ export default function AboutHero() {
         </div>
 
         {/* As featured in strip */}
-        <div className="reveal mt-20 flex flex-col items-center gap-5 border-t border-forest/10 pt-8 md:flex-row md:gap-10">
+        {/* <div className="reveal mt-20 flex flex-col items-center gap-5 border-t border-forest/10 pt-8 md:flex-row md:gap-10">
           <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-forest/55">
             As featured in
           </p>
@@ -110,7 +110,7 @@ export default function AboutHero() {
             <li>The&nbsp;Hindu</li>
             <li className="tracking-wider not-italic">VICE&nbsp;MUNCHIES</li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </Section>
   );

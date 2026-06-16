@@ -14,12 +14,12 @@ export default function AboutStory() {
           <div className="reveal relative">
             <div className="parallax-slow relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl shadow-premium">
               <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80"
+                src="/images/glen-harvest.logo.jpeg"
                 alt="Glen Harvest founder"
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest/35 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-forest/35 via-transparent to-transparent" />
             </div>
 
             {/* Floating credential card */}
@@ -63,10 +63,10 @@ export default function AboutStory() {
               <div className="h-px flex-1 bg-forest/20" />
               <div>
                 <p className="font-serif text-xl font-semibold text-forest">
-                  Aarav &amp; Meera Sinha
+                  Glen Harvest Team
                 </p>
                 <p className="mt-1 text-xs uppercase tracking-[0.2em] text-forest/55">
-                  Co-founders
+                  Team
                 </p>
               </div>
             </div>

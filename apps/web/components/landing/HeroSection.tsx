@@ -31,8 +31,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative isolate overflow-hidden bg-[#F0DEC2] text-forest"
-      style={{ height: "100vh", minHeight: "720px" }}
+      className="hero-shell relative isolate h-screen min-h-[720px] overflow-hidden bg-cream text-forest"
     >
       {/* Paper noise */}
       <div className="noise-overlay pointer-events-none absolute inset-0 z-0" />
@@ -91,12 +90,12 @@ export function HeroSection() {
         className="absolute inset-x-0 z-20"
         style={{ top: "6.5rem", bottom: "min(36vh, 19rem)" }}
       >
-        <div className="mx-auto grid h-full max-w-7xl items-center gap-6 px-6 md:grid-cols-[1.05fr_0.95fr] md:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
+        <div className="mx-auto grid h-full max-w-7xl items-center gap-6 px-6 sm:grid-cols-[1.05fr_0.95fr] sm:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
           {/* Left */}
-          <div className="max-w-xl 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
+          <div className="mx-auto max-w-xl text-center sm:mx-0 sm:text-left 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
             <p
               data-hero-wordmark
-              className="font-serif text-4xl font-bold leading-[0.95] text-forest md:text-5xl lg:text-[3.5rem] 2xl:text-[clamp(3rem,2.7vw,4.25rem)]"
+              className="hidden font-serif text-4xl font-bold leading-[0.95] text-forest sm:block sm:text-5xl lg:text-[3.5rem] 2xl:text-[clamp(3rem,2.7vw,4.25rem)]"
               style={{ letterSpacing: "-0.015em" }}
             >
               Glen
@@ -123,7 +122,7 @@ export function HeroSection() {
 
           {/* Right — product pack (raw.png IS the pack) */}
           <div className="relative flex h-full items-end justify-center md:justify-center 2xl:translate-y-[5vh]">
-            <div className="relative bottom-[-8%] left-[14%] w-[15rem] md:w-[20rem] lg:w-[24rem] xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
+            <div className="relative bottom-[-8%] left-0 w-[15rem] sm:left-[14%] md:w-[20rem] lg:w-[24rem] xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
               <Image
                 src={`${HERO_IMG}/raw.png`}
                 alt="Glen Harvest High Protein Makhana"
@@ -222,7 +221,7 @@ export function HeroSection() {
           </div>
 
           {/* Mid tree */}
-          <div className="absolute bottom-0 left-[58%] hidden w-[5.5rem] md:block md:w-[6.5rem] lg:w-[7.5rem]">
+          <div className="absolute bottom-0 left-[58%] hidden w-[5.5rem] sm:block md:w-[6.5rem] lg:w-[7.5rem]">
             <Image
               src={`${HERO_IMG}/tree.png`}
               alt=""
@@ -234,7 +233,7 @@ export function HeroSection() {
           </div>
 
           {/* Right tree */}
-          <div className="absolute bottom-0 left-[74%] hidden w-[5rem] md:block md:w-[6rem] lg:w-[7rem]">
+          <div className="absolute bottom-0 left-[74%] hidden w-[5rem] sm:block md:w-[6rem] lg:w-[7rem]">
             <Image
               src={`${HERO_IMG}/tree.png`}
               alt=""

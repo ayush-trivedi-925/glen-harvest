@@ -7,29 +7,25 @@ const process = [
     step: "01",
     title: "Source",
     body: "Aquatic farms in Bihar's lowlands, where makhana has been harvested for centuries.",
-    image:
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+    image: "/images/brand-story-image-2.jpg",
   },
   {
     step: "02",
     title: "Hand-select",
     body: "Every kernel inspected by hand for size, color, and the right satisfying weight.",
-    image:
-      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80",
+    image: "/images/placeholder-images/dry-fruits-h.jpg",
   },
   {
     step: "03",
     title: "Slow roast",
     body: "Small-batch roasting at controlled temperatures. Never fried, never rushed.",
-    image:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+    image: "/images/placeholder-images/almonds-p.jpg",
   },
   {
     step: "04",
     title: "Season & seal",
     body: "Tossed with clean seasonings and sealed fresh to preserve the just-roasted aroma.",
-    image:
-      "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=800&q=80",
+    image: "/images/placeholder-images/pistachio-tray-1-h.jpg",
   },
 ];
 

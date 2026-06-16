@@ -73,7 +73,7 @@ export default function PrivateLabelingPage() {
   return (
     <main ref={rootRef} className="relative bg-cream">
       <PrivateLabelHero />
-      <PrivateLabelTrustedBy />
+      {/* <PrivateLabelTrustedBy /> */}
       <PrivateLabelWhatIs />
       <PrivateLabelAudience />
       <PrivateLabelBenefits />
