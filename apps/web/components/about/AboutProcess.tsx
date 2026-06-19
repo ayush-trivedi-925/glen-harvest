@@ -7,7 +7,7 @@ const process = [
     step: "01",
     title: "Source",
     body: "Aquatic farms in Bihar's lowlands, where makhana has been harvested for centuries.",
-    image: "/images/brand-story-image-2.jpg",
+    image: "/images/brand-story-image-1.jpg",
   },
   {
     step: "02",
@@ -50,14 +50,14 @@ export default function AboutProcess() {
                 index % 2 === 1 ? "sm:translate-y-12" : ""
               }`}
             >
-              <div className="relative aspect-[5/3] overflow-hidden">
+              <div className="relative aspect-5/3 overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-forest/30 to-transparent" />
                 <span className="absolute left-5 top-5 rounded-full bg-cream/90 px-3 py-1 font-serif text-xl font-semibold text-forest backdrop-blur-sm">
                   {item.step}
                 </span>

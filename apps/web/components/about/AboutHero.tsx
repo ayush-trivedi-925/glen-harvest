@@ -60,7 +60,7 @@ export default function AboutHero() {
               className="absolute right-0 top-6 hidden h-32 w-32 rounded-full border border-dashed border-gold/40 md:block"
             />
 
-            <div className="parallax-slow relative h-[28rem] w-[20rem] overflow-hidden rounded-2xl shadow-premium md:h-[34rem] md:w-[24rem]">
+            <div className="parallax-slow relative h-112 w-[20rem] overflow-hidden rounded-2xl shadow-premium md:h-136 md:w-[24rem]">
               <Image
                 src="/images/placeholder-images/nuts-red-h.jpg"
                 alt="Aquatic farms in Bihar"
@@ -76,7 +76,7 @@ export default function AboutHero() {
                   Est.
                 </p>
                 <p className="mt-0.5 font-serif text-3xl font-semibold leading-none">
-                  2021
+                  2026
                 </p>
                 <p className="mt-1 text-[9px] uppercase tracking-[0.22em] text-cream/65">
                   Bihar · IN

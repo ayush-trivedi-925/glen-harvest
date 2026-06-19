@@ -12,7 +12,6 @@ export default function PrivateLabelInquiryForm() {
     phone: "",
     email: "",
     location: "",
-    launchDate: "",
     description: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -125,15 +124,6 @@ export default function PrivateLabelInquiryForm() {
                 </div>
 
                 <FormField
-                  label="When are you planning to launch?"
-                  name="launchDate"
-                  placeholder="Approximate timeline"
-                  value={formData.launchDate}
-                  onChange={handleChange}
-                  required
-                />
-
-                <FormField
                   label="Describe your project"
                   name="description"
                   placeholder="Tell us about your brand, target audience, and what you're imagining..."
@@ -147,10 +137,10 @@ export default function PrivateLabelInquiryForm() {
                   <p className="text-xs text-forest/55">
                     Or email{" "}
                     <a
-                      href="mailto:hello@glenharvest.com"
+                      href="mailto:support@glenharvest.com"
                       className="text-forest underline underline-offset-4 hover:text-botanical"
                     >
-                      hello@glenharvest.com
+                      support@glenharvest.com
                     </a>
                   </p>
                   <button

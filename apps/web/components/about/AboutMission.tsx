@@ -9,14 +9,14 @@ export default function AboutMission() {
       <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-14 px-6 md:px-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
         {/* Left - Image */}
         <div className="reveal relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-premium">
+          <div className="relative aspect-4/5 overflow-hidden rounded-2xl shadow-premium">
             <Image
               src="/images/placeholder-images/pistachio-blue-p.jpg"
               alt="Aquatic farms in Bihar"
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-forest/40 to-transparent" />
           </div>
         </div>
 

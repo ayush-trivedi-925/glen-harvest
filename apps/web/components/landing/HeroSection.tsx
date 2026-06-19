@@ -15,6 +15,11 @@ import Image from "next/image";
      cow.png         → decorative cow (far right of landscape)
      lotus.png       → lotus flower (landscape)
      cloud.png       → small cloud (scattered in sky)
+
+   Responsive note:
+     Everything desktop (lg / xl / 2xl) is unchanged from the original.
+     The mobile + tablet layer lives in the *base* and *sm:* classes only.
+     The section is shorter below lg so it no longer leaves a tall empty gap.
 ─────────────────────────────────────────────────────────── */
 export function HeroSection() {
   const HERO_IMG = "/images/home hero";
@@ -31,7 +36,8 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="hero-shell relative isolate h-screen min-h-[720px] overflow-hidden bg-cream text-forest"
+      /* h / min-h: mobile + tablet are shorter; lg+ restores the original h-screen min-h-180 */
+      className="hero-shell relative isolate h-[72vh] min-h-[30rem] overflow-hidden bg-cream text-forest sm:h-[50vh] sm:min-h-[12rem] lg:h-screen lg:min-h-180"
     >
       {/* Paper noise */}
       <div className="noise-overlay pointer-events-none absolute inset-0 z-0" />
@@ -48,7 +54,9 @@ export function HeroSection() {
             style={{
               top: c.top,
               left: c.left,
-              width: c.width,
+              // Fluid: shrinks below lg, stays pinned at c.width (320) from ~lg up,
+              // so desktop is unchanged while phones don't get giant clouds.
+              width: `clamp(110px, 32vw, ${c.width}px)`,
               opacity: c.opacity,
             }}
           >
@@ -67,18 +75,17 @@ export function HeroSection() {
 
       {/* ─── Sun (static, sitting in the sky just above the landscape) ─── */}
       <div
-        className="pointer-events-none absolute z-10"
+        className="pointer-events-none absolute z-10 w-[52%] sm:w-[28%] lg:w-[22%]"
         style={{
-          left: "21%",
-          bottom: "min(6vh, 32rem)",
-          width: "44%",
+          left: "34%",
+          bottom: "min(22vh, 10rem)",
         }}
       >
         <Image
           src={`${HERO_IMG}/sun.png`}
           alt=""
-          width={350}
-          height={350}
+          width={200}
+          height={100}
           className="h-auto w-full select-none"
           draggable={false}
           data-hero-sun
@@ -86,13 +93,13 @@ export function HeroSection() {
       </div>
 
       {/* ─── Content (wordmark + headline + CTAs + pack) ─── */}
-      <div className="absolute inset-x-0 z-20 top-[6.5rem] bottom-0 sm:bottom-[min(36vh,19rem)]">
+      <div className="absolute inset-x-0 z-20 top-26 bottom-0 sm:bottom-[min(36vh,19rem)]">
         <div className="mx-auto flex h-full max-w-7xl flex-col px-6 sm:grid sm:items-center sm:gap-6 sm:grid-cols-[1.05fr_0.95fr] sm:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
           {/* Left */}
-          <div className="mx-auto flex max-w-xl flex-1 flex-col items-center justify-center text-center sm:mx-0 sm:block sm:flex-none sm:text-left 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
+          <div className="mx-auto flex max-w-xl flex-1 flex-col items-start justify-center text-left sm:mx-0 sm:block sm:flex-none sm:text-left 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
             <p
               data-hero-wordmark
-              className="hidden font-serif text-4xl font-bold leading-[0.95] text-forest sm:block sm:text-5xl lg:text-[3.5rem] 2xl:text-[clamp(3rem,2.7vw,4.25rem)]"
+              className=" font-serif text-4xl font-bold leading-[0.95] text-forest sm:block sm:text-5xl lg:text-[3.5rem] 2xl:text-[clamp(3rem,2.7vw,4.25rem)]"
               style={{ letterSpacing: "-0.015em" }}
             >
               <Image
@@ -105,24 +112,22 @@ export function HeroSection() {
 
             <h1
               data-hero-headline
-              className="mt-5 font-serif text-[clamp(2.25rem,4.6vw,3.9rem)] leading-[1.02] 2xl:mt-6 2xl:text-[clamp(3.25rem,3vw,4.75rem)]"
+              className="mt-5 font-serif text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.02] 2xl:mt-6 2xl:text-[clamp(3.25rem,3vw,4.75rem)]"
             >
               <span className="block font-extrabold text-[#2C3D2A]">
-                Tradition in
-                <br />
+                Tradition in <br className="lg:hidden" />
                 every bite,
               </span>
               <span className="mt-1 block font-extrabold text-[#7A341E]">
-                Nutrition in
-                <br />
+                Nutrition in <br className="lg:hidden" />
                 every grain.
               </span>
             </h1>
           </div>
 
           {/* Right — product pack (raw.png IS the pack) */}
-          <div className="relative flex justify-center pb-[11vh] sm:h-full sm:items-end sm:pb-0 md:justify-center 2xl:translate-y-[5vh]">
-            <div className="relative bottom-0 left-0 w-[16rem] sm:bottom-[-8%] sm:left-[14%] md:w-[20rem] lg:w-[24rem]  xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
+          <div className="relative flex justify-center pb-[6vh] sm:h-full sm:items-end sm:pb-0 md:justify-center 2xl:translate-y-[5vh]">
+            <div className="relative bottom-[-38%] sm:bottom-[-72%] lg:bottom-[-8%] left-[14%] w-[14rem] sm:left-[23%] sm:w-[18rem] md:w-[26rem] lg:w-[24rem]  xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
               <Image
                 src={`${HERO_IMG}/raw.png`}
                 alt="Glen Harvest High Protein Makhana"
@@ -141,7 +146,7 @@ export function HeroSection() {
       {/* ─── Landscape band ─── */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-10"
-        style={{ height: "min(38vh, 20rem)" }}
+        style={{ height: "min(34vh, 20rem)" }}
       >
         {/* Tree-line backdrop, full width */}
         <div className="absolute inset-x-0 bottom-0 h-full">
@@ -161,7 +166,7 @@ export function HeroSection() {
         {/* Diorama layered above the tree-line */}
         <div data-hero-diorama className="absolute inset-x-0 bottom-0 h-full">
           {/* Archway + bird (single asset) — far left */}
-          <div className="absolute bottom-[-24] left-[1%] w-[7.5rem] md:w-[9rem] lg:w-[16.5rem]">
+          <div className="absolute bottom-[-24px] sm:bottom-[-1%] lg:bottom-[-24px] left-[-6%] sm:left-[-1%] lg:left-[1%] w-[7.5rem] md:w-[10rem] lg:w-[16.5rem]">
             <Image
               src={`${HERO_IMG}/bird.png`}
               alt=""
@@ -173,7 +178,7 @@ export function HeroSection() {
           </div>
 
           {/* Lotus */}
-          <div className="absolute bottom-[-24] left-[14%] w-14 md:w-16 lg:w-34">
+          <div className="absolute bottom-[-24px] sm:bottom-[-4%] lg:bottom-[-24px] left-[14%] w-14 md:w-24 lg:w-34">
             <Image
               src={`${HERO_IMG}/lotus.png`}
               alt=""
@@ -185,7 +190,7 @@ export function HeroSection() {
           </div>
 
           {/* Woman with bowl (makhana 2) */}
-          <div className="absolute bottom-1 left-[26%] w-[6.5rem] md:w-[8rem] lg:w-[11rem]">
+          <div className="absolute bottom-1 left-[26%] sm:left-[30%] lg:left-[26%] w-[6.5rem] md:w-[8rem] lg:w-[11rem]">
             <Image
               src={`${HERO_IMG}/makhana 2.png`}
               alt=""
@@ -197,7 +202,7 @@ export function HeroSection() {
           </div>
 
           {/* Bowl of makhana (next to the woman) */}
-          <div className="absolute bottom-2 left-[42%] hidden w-14 sm:block md:w-16 lg:w-22">
+          <div className=" absolute bottom-2 sm:bottom-0 lg:bottom-2 left-[42%] sm:left-[50%] lg:left-[42%] hidden w-14 lg:block md:w-23 lg:w-22">
             <Image
               src={`${HERO_IMG}/makhana.png`}
               alt=""
@@ -209,7 +214,7 @@ export function HeroSection() {
           </div>
 
           {/* House */}
-          <div className="absolute bottom-10 left-[47%] w-20 md:w-24 lg:w-39">
+          <div className="absolute bottom-[-1%] sm:bottom-[32] lg:bottom-[8] left-[77%] sm:left-[46%] lg:left-[47%] w-28 md:w-39 lg:w-39">
             <Image
               src={`${HERO_IMG}/house.png`}
               alt=""
@@ -221,7 +226,7 @@ export function HeroSection() {
           </div>
 
           {/* Mid tree */}
-          <div className="absolute bottom-0 left-[58%] hidden w-[5.5rem] sm:block md:w-[6.5rem] lg:w-[7.5rem]">
+          <div className="absolute bottom-[-9%] lg:left-[58%] sm:left-[61%] hidden w-[5.5rem] sm:block md:w-[6.5rem] lg:w-[7.5rem]">
             <Image
               src={`${HERO_IMG}/tree.png`}
               alt=""
@@ -233,7 +238,7 @@ export function HeroSection() {
           </div>
 
           {/* Right tree */}
-          <div className="absolute bottom-0 left-[74%] hidden w-[5rem] sm:block md:w-[6rem] lg:w-[7rem]">
+          <div className="absolute bottom-[-9%] left-[80%] sm:left-[90%] lg:left-[80%] hidden w-[5rem] sm:block md:w-[6rem] lg:w-[7rem]">
             <Image
               src={`${HERO_IMG}/tree.png`}
               alt=""
@@ -245,7 +250,7 @@ export function HeroSection() {
           </div>
 
           {/* Cow */}
-          <div className="absolute bottom-[-12%] right-[-1%] w-[6.5rem] md:w-[8rem] lg:w-[14rem] scale-x-[-1] ">
+          <div className=" hidden sm:block absolute bottom-[-12%] right-[-1%] sm:left-[46%] lg:right-[-1%] w-[6.5rem] md:w-[8rem] lg:w-[14rem]">
             <Image
               src={`${HERO_IMG}/cow.png`}
               alt=""

@@ -2,24 +2,24 @@ import { Section } from "@/components/landing/Section";
 
 const values = [
   {
-    label: "Honest sourcing",
+    label: "Premium harvests",
     detail:
-      "We trace every kernel back to small Bihar farms we know by name, not by number.",
+      "We source makhana from Bihar's finest growing regions, selecting only the highest-quality harvests for every batch.",
   },
   {
-    label: "Slow craft",
+    label: "Careful selection",
     detail:
-      "No shortcuts in the roast. Each batch gets the time it needs to bloom into flavor.",
+      "Every kernel is chosen for its size, texture, and consistency, ensuring a superior snacking experience.",
   },
   {
-    label: "Clean recipes",
+    label: "Pure ingredients",
     detail:
-      "If it doesn't belong in a pantry, it doesn't belong in our packs. Real ingredients only.",
+      "No artificial flavors, preservatives, or unnecessary additives—just quality ingredients that complement the natural goodness of makhana.",
   },
   {
-    label: "Quiet luxury",
+    label: "Exceptional quality",
     detail:
-      "Premium doesn't have to shout. Considered design, considered taste, considered moments.",
+      "From sourcing to packaging, every step is designed to preserve freshness, flavor, and the premium standards Glen Harvest stands for.",
   },
 ];
 

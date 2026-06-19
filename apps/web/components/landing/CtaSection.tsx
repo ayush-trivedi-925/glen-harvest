@@ -46,7 +46,7 @@ export function CtaSection() {
          transparent margins so each shows at a consistent size. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-[-90] bottom-0 z-[5] flex translate-y-[50%] items-end justify-between px-[3vw] md:px-[5vw]"
+        className="pointer-events-none absolute inset-x-[-90] bottom-0 z-5 flex translate-y-[50%] items-end justify-between px-[3vw] md:px-[5vw]"
       >
         {packs.map((file) => {
           // The source frames have transparent margin around each pack, so

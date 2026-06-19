@@ -145,10 +145,10 @@ export default function ContactForm({
                   <p className="text-xs text-forest/55">
                     Or email{" "}
                     <a
-                      href="mailto:hello@glenharvest.com"
+                      href="mailto:support@glenharvest.com"
                       className="text-forest underline underline-offset-4 hover:text-botanical"
                     >
-                      hello@glenharvest.com
+                      support@glenharvest.com
                     </a>
                   </p>
                   <button

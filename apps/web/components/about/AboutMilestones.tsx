@@ -2,29 +2,29 @@ import { Section } from "@/components/landing/Section";
 
 const milestones = [
   {
-    year: "2021",
-    title: "A pond, a pan, an idea",
-    body: "Two siblings, one borrowed kitchen in Patna, and a stubborn belief that snacking could feel quieter.",
+    year: "1800s",
+    title: "The birthplace of makhana",
+    body: "For centuries, the ponds of Mithila have produced some of the world's finest makhana, treasured for its purity, nutrition, and cultural significance.",
   },
   {
-    year: "2022",
-    title: "First fifty farms",
-    body: "Partnered with smallholder makhana growers across Madhubani and Darbhanga — fair price, full traceability.",
-  },
-  {
-    year: "2023",
-    title: "The roast room",
-    body: "Built our own small-batch roastery. Same iron-pan principle, scaled with care, never sacrificed for speed.",
+    year: "1900s",
+    title: "A living tradition",
+    body: "Bihar's farming communities passed down the knowledge of cultivating and roasting makhana, preserving a craft rooted in patience and care.",
   },
   {
     year: "2024",
-    title: "Into thoughtful pantries",
-    body: "Landed on shelves in 200+ independent grocers and tea rooms across India, UK, and the UAE.",
+    title: "The Glen Harvest vision",
+    body: "We saw an opportunity to share Bihar's finest harvest with the world while ensuring farmers receive fair value for the quality they produce.",
+  },
+  {
+    year: "2025",
+    title: "From idea to reality",
+    body: "We built relationships with growers, refined our products, and developed a quality-first approach focused on transparency and sustainability.",
   },
   {
     year: "2026",
-    title: "Still small. Still slow.",
-    body: "Six flavors, one promise: every pack tastes like it was made for someone, not for a market.",
+    title: "Glen Harvest launches",
+    body: "With a mission to elevate Bihar on the global stage, Glen Harvest brings premium makhana to consumers worldwide while supporting the communities behind every harvest.",
   },
 ];
 
@@ -90,9 +90,7 @@ export default function AboutMilestones() {
                     aria-hidden="true"
                     className="absolute left-6 top-3 h-3 w-3 -translate-x-1/2 rounded-full bg-gold shadow-[0_0_0_6px_rgba(212,168,83,0.18)] md:left-auto md:right-[-2.85rem] md:top-4"
                     style={{
-                      ...(isRight
-                        ? { right: "auto", left: "-2.85rem" }
-                        : {}),
+                      ...(isRight ? { right: "auto", left: "-2.85rem" } : {}),
                     }}
                   />
                 </div>
@@ -114,10 +112,7 @@ export default function AboutMilestones() {
         {/* Stats strip */}
         <div className="reveal mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-forest/10 bg-forest/10 md:grid-cols-4">
           {stats.map((s) => (
-            <div
-              key={s.label}
-              className="bg-cream/95 p-6 text-center md:p-8"
-            >
+            <div key={s.label} className="bg-cream/95 p-6 text-center md:p-8">
               <p className="font-serif text-4xl font-semibold text-forest md:text-5xl">
                 {s.value}
               </p>
