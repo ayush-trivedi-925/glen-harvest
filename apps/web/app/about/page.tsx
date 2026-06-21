@@ -73,7 +73,6 @@ export default function AboutPage() {
       <AboutProcess />
       <AboutMilestones />
       <AboutValues />
-      <ContactForm />
     </main>
   );
 }

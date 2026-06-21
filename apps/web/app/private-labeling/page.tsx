@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PrivateLabelHero from "@/components/private-label/PrivateLabelHero";
-import PrivateLabelTrustedBy from "@/components/private-label/PrivateLabelTrustedBy";
 import PrivateLabelWhatIs from "@/components/private-label/PrivateLabelWhatIs";
 import PrivateLabelAudience from "@/components/private-label/PrivateLabelAudience";
 import PrivateLabelBenefits from "@/components/private-label/PrivateLabelBenefits";
@@ -73,7 +72,6 @@ export default function PrivateLabelingPage() {
   return (
     <main ref={rootRef} className="relative bg-cream">
       <PrivateLabelHero />
-      {/* <PrivateLabelTrustedBy /> */}
       <PrivateLabelWhatIs />
       <PrivateLabelAudience />
       <PrivateLabelBenefits />

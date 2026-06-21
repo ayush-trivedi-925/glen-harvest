@@ -250,7 +250,7 @@ export function HeroSection() {
           </div>
 
           {/* Cow */}
-          <div className=" hidden sm:block absolute bottom-[-12%] right-[-1%] sm:left-[46%] lg:right-[-1%] w-[6.5rem] md:w-[8rem] lg:w-[14rem]">
+          <div className=" hidden sm:block absolute bottom-[-12%] right-[-1%] sm:left-[46%] lg:left-[83%] w-[6.5rem] md:w-[8rem] lg:w-[14rem]">
             <Image
               src={`${HERO_IMG}/cow.png`}
               alt=""

@@ -11,6 +11,7 @@ const links = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Private Labeling", href: "/private-labeling" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {

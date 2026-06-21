@@ -5,6 +5,10 @@ import {
   FaInstagram,
   FaYoutube,
   FaArrowRight,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaRegClock,
 } from "react-icons/fa";
 
 const quickLinks = [
@@ -35,12 +39,6 @@ const policyLinks = [
   { href: "/returns", label: "Returns" },
   { href: "/terms", label: "Terms & Conditions" },
   { href: "/privacy", label: "Privacy Policy" },
-];
-
-const socialLinks = [
-  { href: "https://facebook.com", icon: FaFacebookF, label: "Facebook" },
-  { href: "https://instagram.com", icon: FaInstagram, label: "Instagram" },
-  { href: "https://youtube.com", icon: FaYoutube, label: "YouTube" },
 ];
 
 function FooterColumn({
@@ -124,59 +122,60 @@ function Footer() {
               crafted with care for mindful, everyday snacking.
             </p>
 
-            {/* Newsletter */}
-            <div className="mt-8">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                From our fields to your inbox
+            {/* Contact */}
+            <address className="mt-8 not-italic">
+              <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                Get In Touch
               </h3>
-              <p className="mt-2 text-sm text-cream/60">
-                Seasonal recipes, harvest stories, and the occasional exclusive
-                offer.
-              </p>
-              {/* TODO: wire up to your newsletter service — replace action with your endpoint or a server action */}
-              <form
-                action="#"
-                method="post"
-                className="mt-4 flex max-w-md items-center gap-2"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder="your@email.com"
-                  aria-label="Email address"
-                  className="min-w-0 flex-1 rounded-full border border-cream/15 bg-botanical/50 px-5 py-3 text-sm text-cream placeholder:text-cream/40 outline-none transition-all duration-300 focus:border-gold/50 focus:bg-botanical/70 focus:ring-2 focus:ring-gold/20"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe to newsletter"
-                  className="group flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gold text-forest transition-all duration-300 hover:bg-cream hover:shadow-lg hover:shadow-gold/30"
-                >
-                  <FaArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-                </button>
-              </form>
-            </div>
+              <ul className="space-y-3.5 text-sm text-cream/70">
+                <li className="flex items-start gap-3">
+                  <FaMapMarkerAlt
+                    aria-hidden
+                    className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold/80"
+                  />
+                  {/* TODO: replace with your registered business address */}
+                  <span>
+                    Glen Harvest Foods, Laheriasarai,
+                    <br />
+                    Darbhanga, Bihar 846001, India
+                  </span>
+                </li>
+                <li>
+                  {/* TODO: replace with your contact number */}
+                  <a
+                    href="tel:+919876543210"
+                    className="flex items-center gap-3 transition-colors duration-300 hover:text-cream"
+                  >
+                    <FaPhoneAlt
+                      aria-hidden
+                      className="h-4 w-4 flex-shrink-0 text-gold/80"
+                    />
+                    +91 98765 43210
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:support@glenharvest.com"
+                    className="flex items-center gap-3 transition-colors duration-300 hover:text-cream"
+                  >
+                    <FaEnvelope
+                      aria-hidden
+                      className="h-4 w-4 flex-shrink-0 text-gold/80"
+                    />
+                    support@glenharvest.com
+                  </a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <FaRegClock
+                    aria-hidden
+                    className="h-4 w-4 flex-shrink-0 text-gold/80"
+                  />
+                  Mon – Sat: 9:00 AM – 6:00 PM
+                </li>
+              </ul>
+            </address>
 
             {/* Social */}
-            <div className="mt-9">
-              <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                Follow Us On
-              </h3>
-              <div className="flex items-center gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="group flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 text-cream/70 transition-all duration-300 hover:border-gold hover:bg-gold hover:text-forest"
-                  >
-                    <social.icon className="h-[15px] w-[15px] transition-transform duration-300 group-hover:scale-110" />
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Link columns */}

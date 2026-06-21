@@ -52,7 +52,7 @@ export default function AboutStory() {
               <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36 1 24.832 4.32 28 8.32 28c3.776 0 6.56-3.04 6.56-6.624 0-3.552-2.464-6.144-5.728-6.144-.64 0-1.504.128-1.728.224.544-3.68 3.968-7.968 7.392-10.112L9.352 4zm16.512 0c-4.832 3.456-8.288 9.12-8.288 15.36 0 5.472 3.328 8.64 7.328 8.64 3.712 0 6.56-3.04 6.56-6.624 0-3.552-2.528-6.144-5.792-6.144-.64 0-1.44.128-1.664.224.544-3.68 3.904-7.968 7.328-10.112L25.864 4z" />
             </svg>
 
-            <blockquote className="reveal mt-6 font-serif text-3xl font-medium leading-tight text-forest text-balance md:text-4xl lg:text-[2.6rem]">
+            <blockquote className="reveal mt-6 font-serif text-2xl font-medium leading-tight text-forest text-balance md:text-4xl lg:text-4xl">
               &ldquo;Our mission is to take Bihar&rsquo;s finest makhana to the
               world, ensuring farmers receive their fair share while showcasing
               Bihar&rsquo;s rich heritage. Every pack supports local communities

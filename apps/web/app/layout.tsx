@@ -7,6 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 import BackToTopButton from "@/components/shared/BackToTopButton";
+import SocialDock from "@/components/shared/SocialDock";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
           <main className="grow">{children}</main>
           <Footer />
           <BackToTopButton />
+          <SocialDock />
         </LenisProvider>
       </body>
     </html>
