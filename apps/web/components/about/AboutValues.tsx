@@ -52,9 +52,6 @@ export default function AboutValues() {
             >
               <div className="flex items-start justify-between gap-6">
                 <div>
-                  <span className="font-serif text-5xl font-semibold text-gold">
-                    {(index + 1).toString().padStart(2, "0")}
-                  </span>
                   <h3 className="mt-5 font-serif text-2xl font-semibold">
                     {value.label}
                   </h3>

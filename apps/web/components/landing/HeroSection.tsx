@@ -75,7 +75,7 @@ export function HeroSection() {
 
       {/* ─── Sun (static, sitting in the sky just above the landscape) ─── */}
       <div
-        className="pointer-events-none absolute z-10 w-[52%] sm:w-[28%] lg:w-[22%]"
+        className="pointer-events-none absolute z-10 w-[52%] sm:w-[28%] lg:w-[18%]"
         style={{
           left: "34%",
           bottom: "min(22vh, 10rem)",
@@ -96,35 +96,36 @@ export function HeroSection() {
       <div className="absolute inset-x-0 z-20 top-26 bottom-0 sm:bottom-[min(36vh,19rem)]">
         <div className="mx-auto flex h-full max-w-7xl flex-col px-6 sm:grid sm:items-center sm:gap-6 sm:grid-cols-[1.05fr_0.95fr] sm:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
           {/* Left */}
-          <div className="mx-auto flex max-w-xl flex-1 flex-col items-start justify-center text-left sm:mx-0 sm:block sm:flex-none sm:text-left 2xl:max-w-[30vw] 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
-            <p
-              data-hero-wordmark
-              className=" font-serif text-4xl font-bold leading-[0.95] text-forest sm:block sm:text-5xl lg:text-[3.5rem] 2xl:text-[clamp(3rem,2.7vw,4.25rem)]"
-              style={{ letterSpacing: "-0.015em" }}
-            >
+          <div className="mx-auto flex w-fit flex-1 flex-col items-start justify-center text-left sm:mx-0 sm:block sm:flex-none sm:text-left 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
+            {/* Logo + tagline */}
+            <div className="flex items-center gap-4">
               <Image
                 src={`${HERO_IMG}/glen-harvest.png`}
                 width={200}
                 height={200}
-                alt="Glen harvest title"
+                alt="Glen Harvest title"
+                className="h-auto w-[180px] lg:w-[220px]"
               />
-            </p>
-
+              <p
+                data-hero-tagline
+                className="text-lg font-semibold uppercase tracking-[0.3em] text-earth whitespace-nowrap"
+              >
+                — Product of Mithila
+              </p>
+            </div>
+            {/* Headline */}
             <h1
               data-hero-headline
-              className="mt-5 font-serif text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.02] 2xl:mt-6 2xl:text-[clamp(3.25rem,3vw,4.75rem)]"
+              className="mt-5 font-serif text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.02] whitespace-nowrap"
             >
               <span className="block font-extrabold text-[#2C3D2A]">
-                Tradition in <br className="lg:hidden" />
-                every bite,
+                Tradition in every bite,
               </span>
-              <span className="mt-1 block font-extrabold text-[#7A341E]">
-                Nutrition in <br className="lg:hidden" />
-                every grain.
+              <span className="block font-extrabold text-[#7A341E]">
+                Nutrition in every grain.
               </span>
             </h1>
           </div>
-
           {/* Right — product pack (raw.png IS the pack) */}
           <div className="relative flex justify-center pb-[6vh] sm:h-full sm:items-end sm:pb-0 md:justify-center 2xl:translate-y-[5vh]">
             <div className="relative bottom-[-38%] sm:bottom-[-72%] lg:bottom-[-8%] left-[14%] w-[14rem] sm:left-[23%] sm:w-[18rem] md:w-[26rem] lg:w-[24rem]  xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">

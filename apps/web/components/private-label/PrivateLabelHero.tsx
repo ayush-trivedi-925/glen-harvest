@@ -37,10 +37,10 @@ export default function PrivateLabelHero() {
 
           <div className="reveal relative flex items-center justify-center">
             <div className="absolute -inset-8 rounded-full bg-gold/15 blur-2xl" />
-            <div className="parallax-slow relative h-112 w-[20rem] overflow-hidden rounded-2xl shadow-premium md:h-136 md:w-[24rem]">
+            <div className="parallax-slow relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-premium">
               <Image
-                src="https://images.unsplash.com/photo-1558438102-64c19e995a44?q=80&w=1073&auto=format&fit=crop"
-                alt="Custom packaging"
+                src="/images/plant-images/plant-image-6.png"
+                alt="Glen Harvest manufacturing facility"
                 fill
                 className="object-cover"
               />

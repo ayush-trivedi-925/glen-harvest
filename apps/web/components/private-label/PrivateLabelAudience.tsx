@@ -101,9 +101,6 @@ export default function PrivateLabelAudience() {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-forest/8 text-forest transition group-hover:bg-gold/20 group-hover:text-forest">
                   {a.icon}
                 </span>
-                <span className="font-serif text-3xl font-semibold text-gold/55">
-                  {(index + 1).toString().padStart(2, "0")}
-                </span>
               </div>
               <h3 className="mt-6 font-serif text-2xl font-semibold text-forest md:text-3xl">
                 {a.title}

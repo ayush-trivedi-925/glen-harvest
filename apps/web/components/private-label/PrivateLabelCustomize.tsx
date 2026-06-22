@@ -44,8 +44,8 @@ export default function PrivateLabelCustomize() {
             <div className="grid grid-cols-2 gap-4">
               <div className="parallax-slow relative aspect-3/4 overflow-hidden rounded-2xl shadow-premium">
                 <Image
-                  src="/images/placeholder-images/collage.jpg"
-                  alt="Custom pouch packaging"
+                  src="/images/plant-images/plant-image-4.png"
+                  alt="Glen Harvest roasting and processing line"
                   fill
                   className="object-cover"
                 />
@@ -53,16 +53,16 @@ export default function PrivateLabelCustomize() {
               <div className="space-y-4">
                 <div className="relative aspect-square overflow-hidden rounded-2xl shadow-premium">
                   <Image
-                    src="/images/placeholder-images/pistachio-wood-tray-h.jpg"
-                    alt="Custom tin packaging"
+                    src="/images/plant-images/plant-image-1.png"
+                    alt="Glen Harvest production facility"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div className="relative aspect-5/6 overflow-hidden rounded-2xl shadow-premium">
                   <Image
-                    src="/images/placeholder-images/pista-p.jpg"
-                    alt="Custom flavor blends"
+                    src="/images/plant-images/plant-image-5.png"
+                    alt="Stainless-steel processing equipment at Glen Harvest"
                     fill
                     className="object-cover"
                   />
@@ -98,9 +98,6 @@ export default function PrivateLabelCustomize() {
                   key={o.label}
                   className="reveal flex items-start gap-5 py-5"
                 >
-                  <span className="mt-1 font-serif text-sm font-semibold text-gold">
-                    {(index + 1).toString().padStart(2, "0")}
-                  </span>
                   <div>
                     <h3 className="font-serif text-xl font-semibold text-forest">
                       {o.label}

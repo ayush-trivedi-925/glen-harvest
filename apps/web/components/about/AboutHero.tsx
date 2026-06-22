@@ -62,7 +62,7 @@ export default function AboutHero() {
 
             <div className="parallax-slow relative h-112 w-[20rem] overflow-hidden rounded-2xl shadow-premium md:h-136 md:w-[24rem]">
               <Image
-                src="/images/placeholder-images/nuts-red-h.jpg"
+                src="/images/placeholder-images/image-1.png"
                 alt="Aquatic farms in Bihar"
                 fill
                 className="object-cover"

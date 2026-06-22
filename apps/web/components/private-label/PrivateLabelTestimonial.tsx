@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Section } from "@/components/landing/Section";
 
 export default function PrivateLabelTestimonial() {
@@ -32,13 +31,15 @@ export default function PrivateLabelTestimonial() {
             </blockquote>
 
             <div className="reveal mt-10 flex items-center gap-5">
-              <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-cream shadow-soft">
-                <Image
-                  src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?w=200&q=80"
-                  alt="Riya Bhandari"
-                  fill
-                  className="object-cover"
-                />
+              <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-cream bg-forest/10 shadow-soft">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-8 w-8 text-forest/35"
+                  aria-hidden="true"
+                >
+                  <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2.5c-4.5 0-8 2.3-8 5.2V22h16v-2.3c0-2.9-3.5-5.2-8-5.2z" />
+                </svg>
               </div>
               <div>
                 <p className="font-serif text-xl font-semibold text-forest">

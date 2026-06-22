@@ -53,9 +53,6 @@ export default function PrivateLabelProcess() {
               >
                 <div className="flex shrink-0 items-center gap-4">
                   <div className="relative h-5.5 w-5.5 rounded-full bg-gold" />
-                  <span className="font-sans text-xs font-semibold tracking-wider text-gold">
-                    {item.step}
-                  </span>
                 </div>
                 <div className="flex-1">
                   <h3 className="font-serif text-3xl font-semibold text-cream md:text-4xl">

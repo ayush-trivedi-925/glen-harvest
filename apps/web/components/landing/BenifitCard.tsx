@@ -9,9 +9,6 @@ export function BenefitCard({
 }) {
   return (
     <article className="reveal rounded-lg border border-forest/10 bg-white/38 p-6 shadow-soft backdrop-blur-sm">
-      <span className="font-serif text-4xl font-semibold text-gold">
-        {(index + 1).toString().padStart(2, "0")}
-      </span>
       <h3 className="mt-5 text-xl font-semibold text-forest">
         {benefit.label}
       </h3>

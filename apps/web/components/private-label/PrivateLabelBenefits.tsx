@@ -53,9 +53,6 @@ export default function PrivateLabelBenefits() {
               key={benefit.label}
               className="reveal group rounded-2xl border border-forest/10 bg-white/40 p-7 shadow-soft backdrop-blur-sm transition duration-500 hover:-translate-y-2 hover:shadow-premium"
             >
-              <span className="font-serif text-4xl font-semibold text-gold">
-                {(index + 1).toString().padStart(2, "0")}
-              </span>
               <h3 className="mt-5 font-serif text-2xl font-semibold text-forest">
                 {benefit.label}
               </h3>

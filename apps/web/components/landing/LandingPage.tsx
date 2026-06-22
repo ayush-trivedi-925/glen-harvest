@@ -47,6 +47,7 @@ export function LandingPage() {
       const treebg = pick("[data-hero-treebg]");
       const wordmark = pick("[data-hero-wordmark]");
       const headline = pick("[data-hero-headline] span");
+      const tagline = pick("[data-hero-tagline]");
       const pack = pick("[data-hero-pack]");
       const diorama = pick("[data-hero-diorama] img");
 
@@ -61,7 +62,7 @@ export function LandingPage() {
         yPercent: 16,
         transformOrigin: "50% 100%",
       });
-      gsap.set([...wordmark, ...headline], { autoAlpha: 0, x: -48 });
+      gsap.set([...wordmark, ...headline, ...tagline], { autoAlpha: 0, x: -48 });
 
       const intro = gsap.timeline({
         defaults: { ease: "power3.out" },
@@ -82,6 +83,7 @@ export function LandingPage() {
           { autoAlpha: 1, x: 0, duration: 0.85, stagger: 0.14 },
           0.42,
         )
+        .to(tagline, { autoAlpha: 1, x: 0, duration: 0.8 }, 0.62)
         .to(
           pack,
           { autoAlpha: 1, scale: 1, duration: 1, ease: "back.out(1.4)" },
@@ -106,6 +108,7 @@ export function LandingPage() {
             ...treebg,
             ...wordmark,
             ...headline,
+            ...tagline,
             ...pack,
             ...diorama,
           ],

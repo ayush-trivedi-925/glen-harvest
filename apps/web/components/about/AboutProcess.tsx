@@ -13,19 +13,19 @@ const process = [
     step: "02",
     title: "Hand-select",
     body: "Every kernel inspected by hand for size, color, and the right satisfying weight.",
-    image: "/images/placeholder-images/dry-fruits-h.jpg",
+    image: "/images/placeholder-images/image-3.png",
   },
   {
     step: "03",
     title: "Slow roast",
     body: "Small-batch roasting at controlled temperatures. Never fried, never rushed.",
-    image: "/images/placeholder-images/almonds-p.jpg",
+    image: "/images/placeholder-images/image-4.png",
   },
   {
     step: "04",
     title: "Season & seal",
     body: "Tossed with clean seasonings and sealed fresh to preserve the just-roasted aroma.",
-    image: "/images/placeholder-images/pistachio-tray-1-h.jpg",
+    image: "/images/placeholder-images/image-5.png",
   },
 ];
 
@@ -58,9 +58,6 @@ export default function AboutProcess() {
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-forest/30 to-transparent" />
-                <span className="absolute left-5 top-5 rounded-full bg-cream/90 px-3 py-1 font-serif text-xl font-semibold text-forest backdrop-blur-sm">
-                  {item.step}
-                </span>
               </div>
               <div className="p-6">
                 <h3 className="font-serif text-2xl font-semibold text-forest">
