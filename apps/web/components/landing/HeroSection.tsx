@@ -108,7 +108,7 @@ export function HeroSection() {
               />
               <p
                 data-hero-tagline
-                className="text-lg font-semibold uppercase tracking-[0.3em] text-earth whitespace-nowrap"
+                className="sm:text-xs md:text-lg lg:text-lg font-semibold uppercase tracking-wider lg:tracking-[0.3em] text-earth whitespace-nowrap"
               >
                 — Product of Mithila
               </p>
@@ -116,7 +116,7 @@ export function HeroSection() {
             {/* Headline */}
             <h1
               data-hero-headline
-              className="mt-5 font-serif text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.02] whitespace-nowrap"
+              className="mt-5 font-serif text-[clamp(1.6rem,3.4vw,2.8rem)] leading-[1.05] tracking-[-0.01em] whitespace-nowrap"
             >
               <span className="block font-extrabold text-[#2C3D2A]">
                 Tradition in every bite,
