@@ -36,8 +36,10 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      /* h / min-h: mobile + tablet are shorter; lg+ restores the original h-screen min-h-180 */
-      className="hero-shell relative isolate h-[72vh] min-h-[30rem] overflow-hidden bg-cream text-forest sm:h-[50vh] sm:min-h-[12rem] lg:h-screen lg:min-h-180"
+      /* h / min-h: mobile + tablet are shorter. lg+ uses min(window, 940px):
+         it fits shorter laptops (no clipping) but caps on tall monitors so the
+         composition never stretches — consistent on every large screen. */
+      className="hero-shell relative isolate h-[72vh] min-h-[30rem] overflow-hidden bg-cream text-forest sm:h-[50vh] sm:min-h-[12rem] lg:h-[900px] lg:min-h-[900px]"
     >
       {/* Paper noise */}
       <div className="noise-overlay pointer-events-none absolute inset-0 z-0" />
@@ -77,8 +79,9 @@ export function HeroSection() {
       <div
         className="pointer-events-none absolute z-10 w-[52%] sm:w-[28%] lg:w-[18%]"
         style={{
-          left: "34%",
-          bottom: "min(22vh, 10rem)",
+          left: "50%",
+          bottom: "260px",
+          transform: "translateX(-50%)",
         }}
       >
         <Image
@@ -94,10 +97,9 @@ export function HeroSection() {
 
       {/* ─── Content (wordmark + headline + CTAs + pack) ─── */}
       <div className="absolute inset-x-0 z-20 top-26 bottom-0 sm:bottom-[min(36vh,19rem)]">
-        <div className="mx-auto flex h-full max-w-7xl flex-col px-6 sm:grid sm:items-center sm:gap-6 sm:grid-cols-[1.05fr_0.95fr] sm:px-10 lg:px-12 2xl:w-[78vw] 2xl:max-w-none 2xl:grid-cols-[0.9fr_1.1fr] 2xl:gap-[4vw] 2xl:px-0">
+        <div className="mx-auto flex h-full w-full max-w-[1440px] flex-col px-6 sm:grid sm:items-center sm:gap-6 sm:grid-cols-[1.05fr_0.95fr] sm:px-10 lg:px-12">
           {/* Left */}
-          <div className="mx-auto flex w-fit flex-1 flex-col items-start justify-center text-left sm:mx-0 sm:block sm:flex-none sm:text-left 2xl:translate-y-[-12vh] 2xl:translate-x-[10vh]">
-            {/* Logo + tagline */}
+          <div className="mx-auto flex w-fit flex-1 flex-col items-start justify-center text-left sm:mx-0 sm:block sm:flex-none sm:text-left">
             <div className="flex items-center gap-4">
               <Image
                 src={`${HERO_IMG}/glen-harvest.png`}
@@ -127,8 +129,8 @@ export function HeroSection() {
             </h1>
           </div>
           {/* Right — product pack (raw.png IS the pack) */}
-          <div className="relative flex justify-center pb-[6vh] sm:h-full sm:items-end sm:pb-0 md:justify-center 2xl:translate-y-[5vh]">
-            <div className="relative bottom-[-38%] sm:bottom-[-72%] lg:bottom-[-8%] left-[14%] w-[14rem] sm:left-[23%] sm:w-[18rem] md:w-[26rem] lg:w-[24rem]  xl:w-[42rem] 2xl:left-[18%] 2xl:w-[42vw] 2xl:max-w-[72rem]">
+          <div className="relative flex justify-center pb-[6vh] sm:h-full sm:items-end sm:pb-0 md:justify-center">
+            <div className="relative bottom-[-38%] sm:bottom-[-75%] lg:bottom-[-62%] left-[8%] w-[14rem] sm:left-[15%] sm:w-[18rem] md:w-[24rem] lg:w-[30rem] xl:w-[34rem]">
               <Image
                 src={`${HERO_IMG}/raw.png`}
                 alt="Glen Harvest High Protein Makhana"
@@ -145,10 +147,7 @@ export function HeroSection() {
       </div>
 
       {/* ─── Landscape band ─── */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10"
-        style={{ height: "min(34vh, 20rem)" }}
-      >
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[320px]">
         {/* Tree-line backdrop, full width */}
         <div className="absolute inset-x-0 bottom-0 h-full">
           <Image
@@ -157,7 +156,7 @@ export function HeroSection() {
             width={2172}
             height={724}
             sizes="100vw"
-            className="absolute inset-x-0 bottom-0 h-full w-full select-none object-cover object-bottom 2xl:h-auto"
+            className="absolute inset-x-0 bottom-0 h-full w-full select-none object-cover object-bottom"
             draggable={false}
             priority
             data-hero-treebg
