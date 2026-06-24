@@ -133,12 +133,38 @@ function Footer() {
                     aria-hidden
                     className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold/80"
                   />
-                  {/* TODO: replace with your registered business address */}
-                  <span>
-                    Glen Harvest Foods, Laheriasarai,
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-gold/70">
+                      Manufactured &amp; Packed By
+                    </span>
                     <br />
-                    Darbhanga, Bihar 846001, India
-                  </span>
+                    <span>
+                      Torque Farmer Producer Company Limited
+                      <br />
+                      Killa No 38,8,1,1 Village Hansapur Aterna
+                      <br />
+                      Block Rai, Sonipat, Haryana 131023
+                    </span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaMapMarkerAlt
+                    aria-hidden
+                    className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold/80"
+                  />
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-gold/70">
+                      Marketed By
+                    </span>
+                    <br />
+                    <span>
+                      Torque Farmer Producer Company Limited
+                      <br />
+                      Registered Office: Agapur, Begusarai,
+                      <br />
+                      Bihar 851128
+                    </span>
+                  </div>
                 </li>
                 <li>
                   {/* TODO: replace with your contact number */}
@@ -150,7 +176,7 @@ function Footer() {
                       aria-hidden
                       className="h-4 w-4 flex-shrink-0 text-gold/80"
                     />
-                    +91 98765 43210
+                    +91 99997 45726
                   </a>
                 </li>
                 <li>
