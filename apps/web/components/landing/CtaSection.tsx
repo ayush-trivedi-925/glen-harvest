@@ -44,7 +44,7 @@ export function CtaSection() {
       {/* Product pack lineup — peeking up half-height from the bottom.
          Square overflow-hidden slots + object-cover crop the packs'
          transparent margins so each shows at a consistent size. */}
-      <div
+      {/* <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-[-90] bottom-0 z-5 flex translate-y-[50%] items-end justify-between px-[3vw] md:px-[5vw]"
       >
@@ -71,7 +71,7 @@ export function CtaSection() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </Section>
   );
 }
